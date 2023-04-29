@@ -16,6 +16,10 @@ After cloning this repository, install the npm dependencies with:
 
 For `ng` commands, run `ng help`.
 
+**Build the app**
+
+    ionic build --prod
+
 **Add android**
 
     npx cap add android
@@ -29,5 +33,6 @@ For `ng` commands, run `ng help`.
     npx cap open ios
 
 **Engine**
-node - 16.15.1
-npm - 8.11.0
+
+    node - 16.15.1
+    npm - 8.11.0

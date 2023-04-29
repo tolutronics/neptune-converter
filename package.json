@@ -1,8 +1,8 @@
 {
-  "name": "currency-converter",
+  "name": "Neptune-converter",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "Tolutronics",
+  "homepage": "https://neptunemfbank.com/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -19,9 +19,11 @@
     "@angular/platform-browser": "^15.0.0",
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
+    "@capacitor/android": "^4.8.0",
     "@capacitor/app": "4.1.1",
     "@capacitor/core": "4.8.0",
     "@capacitor/haptics": "4.1.0",
+    "@capacitor/ios": "^4.8.0",
     "@capacitor/keyboard": "4.1.1",
     "@capacitor/status-bar": "4.1.1",
     "@ionic/angular": "^7.0.0",
@@ -62,5 +64,5 @@
     "ts-node": "~8.3.0",
     "typescript": "~4.8.4"
   },
-  "description": "An Ionic project"
+  "description": "A currency exchange application"
 }

@@ -1,20 +1,91 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+  <ion-toolbar color="secondary">
+    <ion-title> Neptune Exchange </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" color="secondary">
   <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+    <ion-toolbar color="secondary">
+      <ion-title size="large">Neptune Exchange</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div id="container" class="ion-padding">
+    <ion-grid>
+      <!-- The base converter input -->
+      <ion-row class="convert_row convert_from ion-margin-bottom">
+        <ion-col size="6" class="value_col">
+          <ion-input
+            placeholder="Enter Value"
+            [(ngModel)]="valueFrom"
+            type="number"
+            (ngModelChange)="onValueFromChange($event)"
+          ></ion-input>
+        </ion-col>
+        <ion-col size="6" class="select_col">
+          <ion-select
+            [(ngModel)]="selectedFromCurrency"
+            (ionChange)="selectedFromCurrencyChange($event)"
+          >
+            <ion-select-option
+              *ngFor="let currency of currencies"
+              [value]="currency.code"
+              >{{currency.name}}({{currency.symbol}})</ion-select-option
+            >
+          </ion-select>
+        </ion-col>
+      </ion-row>
+
+      <!-- The destination converter input -->
+      <ion-row class="convert_row convert_to">
+        <ion-col size="6" class="value_col">
+          <ion-input
+            type="number"
+            (ngModelChange)="onValueToChange($event)"
+            placeholder="Enter Value"
+            [(ngModel)]="valueTo"
+          ></ion-input>
+        </ion-col>
+        <ion-col size="6" class="select_col">
+          <ion-select
+            [(ngModel)]="selectedToCurrency"
+            (ionChange)="selectedToCurrencyChange($event)"
+          >
+            <ion-select-option
+              *ngFor="let currency of currencies"
+              [value]="currency.code"
+              >{{currency.name}}({{currency.symbol}})</ion-select-option
+            >
+          </ion-select>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-list [inset]="true" *ngIf="exchangeHistories.length>0">
+      <ion-list-header color="primary">
+        <ion-label>Recent Conversions</ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let item of exchangeHistories">
+        <ion-icon name="checkmark"></ion-icon>
+        <ion-label>
+          <h3 class="bold">{{item.exhange_from}} --> {{item.exhange_to}}</h3>
+          <ion-text color="secondary">
+            <p>{{formatDate(item.date)}}</p>
+          </ion-text>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-list [inset]="true" *ngIf="exchangeHistories.length <1">
+      <ion-list-header color="primary">
+        <ion-label>Recent Conversions</ion-label>
+      </ion-list-header>
+      <ion-card class="ion-padding">
+        <ion-text color="primary" class="ion-padding">
+          <ion-label>Your recent conversions will show here.</ion-label>
+        </ion-text>
+      </ion-card>
+    </ion-list>
   </div>
 </ion-content>
